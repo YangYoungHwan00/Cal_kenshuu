@@ -10,8 +10,26 @@ yarn-debug.log*
 /dist
 /out
 
+# environment variable
+.env
+.env.local
+.env.*.local
+
+# Vite build
+dist/
+
+# cache
+.vite/
+
+# Nodemon log
+nodemon-debug.log
+
+# build
+build/
+
 # macOS
 .DS_Store
 
 # Windows
 Thumbs.db
+ethumbs.db
