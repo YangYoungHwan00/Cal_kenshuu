@@ -1,5 +1,11 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import RegisterForm from './components/RegisterForm';
+import LoginForm from './components/LoginForm';
+import HomePage from './components/HomePage';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+
 
 function App() {
   const [msg, setMsg] = useState<string>("");
@@ -23,11 +29,36 @@ function App() {
   return (
     <>
       <div>
-        <h1>React + Express test</h1>
-        <p>{msg}</p>
-      </div>
+        <main>  
+          <Router>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+            </Routes>
+          </Router>
+        </main>
+    </div>
     </>
   )
 }
 
 export default App
+
+// import React from 'react';
+// import RegisterForm from './components/RegisterForm';
+// import LoginForm from './components/LoginForm';
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//         <h1>회원가입 및 로그인 예제</h1>
+//       </header>
+//       <main style={{ display: 'flex', justifyContent: 'space-around', padding: '20px' }}>
+//         <RegisterForm />
+//         <LoginForm />
+//       </main>
+//     </div>
+//   );
+// }
+
+// export default App;

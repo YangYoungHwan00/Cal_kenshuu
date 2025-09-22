@@ -5,6 +5,7 @@ import cors from 'cors';
 import bcrypt from 'bcrypt';
 import { Pool, QueryResult } from 'pg';
 
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -28,8 +29,15 @@ if (!process.env.DATABASE_URL) {
 }
 
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
+    // connectionString: process.env.DATABASE_URL,
+    user: "testuser",
+    host: "localhost",
+    database: "testdb",
+    password: "testpass",
+    port: 5432,
 });
+
+// export default pool;
 
 app.get('/test-db', async (req: Request, res: Response) => {
     try {
@@ -87,6 +95,34 @@ app.post('/api/register', validateRegistration, async (req: Request, res: Respon
         console.error('Registration error:', err);
         res.status(500).send('Registration error');
     }
+});
+
+
+//login
+app.post('/api/login', async (req: Request, res: Response) => {
+  const { username, password } = req.body;
+
+  try {
+    const result = await pool.query('SELECT * FROM users WHERE username = $1', [username]);
+    const user = result.rows[0];
+
+    if (!user) {
+      return res.status(400).json({ message: '이메일 또는 비밀번호가 올바르지 않습니다.' });
+    }
+
+    // 비밀번호 일치 여부 확인
+    const isPasswordMatch = await bcrypt.compare(password, user.password_hash);
+
+    if (!isPasswordMatch) {
+      return res.status(400).json({ message: '이메일 또는 비밀번호가 올바르지 않습니다.' });
+    }
+
+    // 로그인 성공
+    res.status(200).json({ message: '로그인 성공!', user: { id: user.id, username: user.username } });
+  } catch (err) {
+    console.error('Login error:', err);
+    res.status(500).send('서버 오류');
+  }
 });
 
 app.listen(PORT, () => {
