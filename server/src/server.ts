@@ -29,12 +29,19 @@ if (!process.env.DATABASE_URL) {
 }
 
 const pool = new Pool({
-    // connectionString: process.env.DATABASE_URL,
-    user: "testuser",
+    //connectionString: process.env.DATABASE_URL,
+
+    user: "yyh",
     host: "localhost",
-    database: "testdb",
-    password: "testpass",
+    database: "postgres",
+    password: "5246",
     port: 5432,
+
+    // user: "testuser",
+    // host: "localhost",
+    // database: "testdb",
+    // password: "testpass",
+    // port: 5432,
 });
 
 // export default pool;
@@ -123,6 +130,47 @@ app.post('/api/login', async (req: Request, res: Response) => {
     console.error('Login error:', err);
     res.status(500).send('서버 오류');
   }
+
+  
+});
+
+app.get('/api/scores', async (req: Request, res: Response) => {
+    try {
+        const result = await pool.query(`
+            SELECT 
+                u.username,             -- users 테이블에서 사용자 이름 가져오기
+                MAX(s.score) AS high_score  -- scores 테이블에서 최고 점수 가져오기
+            FROM scores s
+            JOIN users u ON s.user_id = u.id -- users 테이블과 scores 테이블을 user_id를 기준으로 연결
+            GROUP BY u.username
+            ORDER BY high_score DESC
+            LIMIT 10;
+        `);
+
+        res.status(200).json(result.rows);
+    } catch (err) {
+        console.error('Ranking fetch error:', err);
+        res.status(500).send('서버 오류');
+    }
+});
+
+app.post('/api/scores', async (req: Request, res: Response) => {
+    const { userId, score } = req.body;
+
+    if (!userId || score === undefined) {
+        return res.status(400).json({ message: '사용자 ID와 점수가 필요합니다.' });
+    }
+
+    try {
+        await pool.query(
+            'INSERT INTO scores (user_id, score) VALUES ($1, $2)',
+            [userId, score]
+        );
+        res.status(201).json({ message: '점수가 성공적으로 저장되었습니다.' });
+    } catch (err) {
+        console.error('Score save error:', err);
+        res.status(500).send('서버 오류');
+    }
 });
 
 app.listen(PORT, () => {

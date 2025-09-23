@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -22,9 +25,12 @@ const LoginForm = () => {
 
       const data = await response.json();
       alert(data.message);
+      navigate('/game');
+
     } catch (err) {
       console.error("Login failed:", err);
       alert("로그인 요청 실패!");
+      navigate('/login');
     }
   };
 

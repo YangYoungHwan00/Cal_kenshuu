@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,6 +26,8 @@ const RegisterForm = () => {
       const data = await response.json();
       if (response.ok) {
         alert(data.message);
+        navigate('/');
+
       } else {
         const errorMessages = data.errors ? data.errors.map((err: any) => err.msg).join('\n') : data.message;
         alert("회원가입 실패!\n" + errorMessages);

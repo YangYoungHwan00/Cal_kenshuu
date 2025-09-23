@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react'
+import { use, useEffect, useState } from 'react'
 import './App.css'
-import RegisterForm from './components/RegisterForm';
-import LoginForm from './components/LoginForm';
-import HomePage from './components/HomePage';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from './AppRoute';
 
 
 
@@ -30,11 +28,9 @@ function App() {
     <>
       <div>
         <main>  
-          <Router>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-            </Routes>
-          </Router>
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
         </main>
     </div>
     </>
