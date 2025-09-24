@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
+
+  let cur_user_name : string = "";
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -24,7 +26,8 @@ const LoginForm = () => {
       });
 
       const data = await response.json();
-      alert(data.message);
+      cur_user_name = data.user.username;
+      alert(cur_user_name+"さん ようこそ！");
       navigate('/game');
 
     } catch (err) {
@@ -36,10 +39,10 @@ const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>로그인</h2>
-      <input type="text" name="username" placeholder="사용자 이름" onChange={handleChange} />
-      <input type="password" name="password" placeholder="비밀번호" onChange={handleChange} />
-      <button type="submit">로그인</button>
+      <h2>ログイン</h2>
+      <input type="text" name="username" placeholder="ユーザー名" onChange={handleChange} />
+      <input type="password" name="password" placeholder="パスワード" onChange={handleChange} />
+      <button type="submit">Login</button>
     </form>
   );
 };

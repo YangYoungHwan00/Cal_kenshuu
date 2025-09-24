@@ -2,10 +2,11 @@ import React, { useEffect, useRef } from 'react';
 import Phaser from 'phaser';
 import { useNavigate } from 'react-router-dom';
 
+
 // 전역 변수
-let score = 0;
-let playerHealth = 3;
-let gameOver = false;
+let score : integer = 0;
+let playerHealth : integer = 3;
+let gameOver : boolean = false;
 let scoreText: Phaser.GameObjects.Text;
 let healthText: Phaser.GameObjects.Text;
 
@@ -73,13 +74,13 @@ class GameScene extends Phaser.Scene {
     cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
     bullets!: Bullets;
     enemies!: Phaser.Physics.Arcade.Group;
-    lastFired = 0;
-    fireRate = 200;
+    lastFired : integer = 0;
+    fireRate : integer = 200;
 
     saveScore(finalScore: number) {
     // 실제 userId는 로그인 상태에서 가져와야 합니다.
     // 여기서는 테스트를 위해 임시로 1이라고 가정합니다.
-    const userId = 1;
+    const userId : integer = 1;
 
     fetch('http://localhost:3000/api/scores', {
         method: 'POST',
@@ -162,20 +163,15 @@ class GameScene extends Phaser.Scene {
                 this.physics.pause();
                 gameOver = true;
                 this.add.text(250, 300, 'Game Over', { fontSize: '64px', color: '#FF0000' });
-
-                this.saveScore(score);
-            }
-
-            const retryButton = this.add.text(400, 400, '다시하기', { fontSize: '32px', color: '#FFF' })
+                const retryButton = this.add.text(400, 400, 'RETRY', { fontSize: '32px', color: '#FFF' })
                     .setOrigin(0.5)
                     .setInteractive(); // 클릭 가능하게 설정
 
                 // '랭킹으로 가기' 버튼
-                const rankingButton = this.add.text(400, 450, '랭킹으로 가기', { fontSize: '32px', color: '#FFF' })
+                const rankingButton = this.add.text(400, 450, 'RANKING', { fontSize: '32px', color: '#FFF' })
                     .setOrigin(0.5)
                     .setInteractive(); // 클릭 가능하게 설정
-
-                // 버튼 클릭 이벤트 리스너
+                    // 버튼 클릭 이벤트 리스너
                 retryButton.on('pointerdown', () => {
                     this.scene.restart(); // 현재 씬을 다시 시작
                 });
@@ -184,6 +180,13 @@ class GameScene extends Phaser.Scene {
                     // Phaser 씬에서 React 라우팅을 호출하기 위한 함수 (아래에서 추가)
                     (this as any).goToRankingPage();
                 });
+
+                    this.saveScore(score);
+            }
+
+            
+
+            
             
         });
         
@@ -228,6 +231,7 @@ const PhaserGameContainer: React.FC = () => {
     const gameContainerRef = useRef<HTMLDivElement>(null);
     const gameRef = useRef<Phaser.Game | null>(null);
     const navigate = useNavigate();
+    
 
     // Phaser 씬에서 React 라우팅을 호출하기 위한 함수
     (GameScene.prototype as any).goToRankingPage = () => {

@@ -17,15 +17,15 @@ function HomePage() {
 
   return (
     <div>
-      <h1>메인 페이지</h1>
+      <h1>Home</h1>
       <button onClick={handleGoToSignUp}>
-        회원가입 하러 가기
+        会員登録
       </button>
       <button onClick={handleGoToLogin}>
-        로그인 하러 가기
+        ログイン
       </button>
       <button onClick={handleGoToRanking}>
-        랭킹
+        ランキング
       </button>
     </div>
   );

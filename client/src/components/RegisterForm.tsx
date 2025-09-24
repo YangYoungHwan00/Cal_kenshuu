@@ -40,10 +40,10 @@ const RegisterForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>회원가입</h2>
-      <input type="text" name="username" placeholder="사용자 이름" onChange={handleChange} />
-      <input type="password" name="password" placeholder="비밀번호" onChange={handleChange} />
-      <button type="submit">가입하기</button>
+      <h2>会員登録</h2>
+      <input type="text" name="username" placeholder="ユーザー名" onChange={handleChange} />
+      <input type="password" name="password" placeholder="パスワード" onChange={handleChange} />
+      <button type="submit">Sign Up</button>
     </form>
   );
 };

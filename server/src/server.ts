@@ -31,17 +31,17 @@ if (!process.env.DATABASE_URL) {
 const pool = new Pool({
     //connectionString: process.env.DATABASE_URL,
 
-    user: "yyh",
-    host: "localhost",
-    database: "postgres",
-    password: "5246",
-    port: 5432,
-
-    // user: "testuser",
+    // user: "yyh",
     // host: "localhost",
-    // database: "testdb",
-    // password: "testpass",
+    // database: "postgres",
+    // password: "5246",
     // port: 5432,
+
+    user: "testuser",
+    host: "localhost",
+    database: "testdb",
+    password: "testpass",
+    port: 5432,
 });
 
 // export default pool;
@@ -125,7 +125,7 @@ app.post('/api/login', async (req: Request, res: Response) => {
     }
 
     // 로그인 성공
-    res.status(200).json({ message: '로그인 성공!', user: { id: user.id, username: user.username } });
+    res.status(200).json({ message: 'Login complete', user: { id: user.id, username: user.username } });
   } catch (err) {
     console.error('Login error:', err);
     res.status(500).send('서버 오류');

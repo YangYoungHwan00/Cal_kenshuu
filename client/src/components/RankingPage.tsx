@@ -46,7 +46,7 @@ const RankingPage = () => {
             <ol>
                 {rankings.map((ranking, index) => (
                     <li key={index}>
-                        {ranking.username}: {ranking.high_score}점
+                        {ranking.username}: {ranking.high_score}点
                     </li>
                 ))}
             </ol>
