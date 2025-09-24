@@ -1,0 +1,31 @@
+/* src/components/LoginForm/LoginForm.module.css */
+/* RegisterForm.module.css도 동일하게 사용 가능 */
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.title {
+    font-size: 2.5em; /* 폰트 크기 조정 */
+    margin-bottom: 1em;
+}
+
+.inputField {
+    width: 100%;
+    padding: 1em;
+    border: 1px solid #00e5ff;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 5px #00e5ff;
+}
+
+.inputField:focus {
+    outline: none;
+    border-color: #00e5ff;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.8);
+}

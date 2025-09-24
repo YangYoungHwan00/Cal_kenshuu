@@ -1,0 +1,17 @@
+/* src/components/PhaserGameContainer/PhaserGameContainer.module.css */
+
+.gameWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.gameContainer {
+    border: 3px solid #00e5ff;
+    border-radius: 10px;
+    box-shadow: 0 0 40px rgba(0, 229, 255, 0.8);
+    overflow: hidden;
+    /* 게임 캔버스에 추가적인 네온 효과를 주고 싶다면,
+       Phaser Game Object에 직접 효과를 추가하는 것이 더 좋습니다. */
+}

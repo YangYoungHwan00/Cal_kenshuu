@@ -2,6 +2,7 @@ import { use, useEffect, useState } from 'react'
 import './App.css'
 import { BrowserRouter } from 'react-router-dom';
 import AppRoutes from './AppRoute';
+import './styles/global.css';
 
 
 

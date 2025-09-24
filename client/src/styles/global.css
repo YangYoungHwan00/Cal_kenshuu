@@ -1,0 +1,80 @@
+/* src/styles/global.css */
+
+/* 기본 폰트 및 배경색 설정 */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+/* 별빛 효과를 위한 애니메이션 키프레임 */
+@keyframes twinkling-stars {
+    0% { background-position: 0 0; }
+    100% { background-position: -1000px -1000px; }
+}
+
+body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    color: #e0e0e0;
+    /* 밤하늘 배경과 별빛 애니메이션 */
+    background: #0d0d26 url('data:image/svg+xml;charset=utf8,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Ccircle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.8)"/%3E%3C/svg%3E') repeat;
+    animation: twinkling-stars 200s linear infinite;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+h1, h2 {
+    color: #00e5ff;
+    text-shadow: 0 0 15px #00e5ff, 0 0 30px #00e5ff; /* 네온사인 효과 강화 */
+}
+
+/* 모든 페이지의 컨테이너 */
+.container {
+    background-color: rgba(2, 4, 28, 0.7);
+    border: 1px solid rgba(0, 229, 255, 0.5);
+    border-radius: 10px;
+    padding: 2.5em; /* 패딩 증가 */
+    box-shadow: 0 0 25px rgba(0, 229, 255, 0.3); /* 그림자 효과 강화 */
+    backdrop-filter: blur(8px); /* 블러 효과 강화 */
+    width: 90%;
+    max-width: 550px; /* 최대 너비 증가 */
+    margin: 1em auto;
+}
+
+/* 공통 버튼 스타일 */
+.btn {
+    font-family: 'Orbitron', sans-serif;
+    background-color: transparent; /* 배경을 투명하게 */
+    color: #00e5ff;
+    border: 2px solid #00e5ff; /* 네온 색상의 테두리 */
+    padding: 0.8em 2em;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-shadow: 0 0 5px #00e5ff; /* 글자에 은은한 네온 효과 */
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.5); /* 버튼 주변에 빛나는 그림자 */
+    transition: all 0.3s ease; /* 부드러운 전환 효과 */
+    margin: 0.5em;
+}
+
+.btn:hover {
+    background-color: #00e5ff; /* 호버 시 배경색 채우기 */
+    color: #1a1a2e;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #00e5ff, 0 0 30px #00e5ff, 0 0 40px #00e5ff; /* 빛 효과 강화 */
+}
+
+/* 두 번째 버튼 (예: 회원가입, 취소 등) */
+.btn-secondary {
+    color: #e0e0e0;
+    border-color: #e0e0e0;
+    box-shadow: 0 0 10px rgba(224, 224, 224, 0.5);
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+    color: #1a1a2e;
+    box-shadow: 0 0 20px #e0e0e0;
+}

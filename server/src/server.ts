@@ -31,17 +31,17 @@ if (!process.env.DATABASE_URL) {
 const pool = new Pool({
     //connectionString: process.env.DATABASE_URL,
 
-    // user: "yyh",
-    // host: "localhost",
-    // database: "postgres",
-    // password: "5246",
-    // port: 5432,
-
-    user: "testuser",
+    user: "yyh",
     host: "localhost",
-    database: "testdb",
-    password: "testpass",
+    database: "postgres",
+    password: "5246",
     port: 5432,
+
+    // user: "testuser",
+    // host: "localhost",
+    // database: "testdb",
+    // password: "testpass",
+    // port: 5432,
 });
 
 // export default pool;
@@ -176,4 +176,3 @@ app.post('/api/scores', async (req: Request, res: Response) => {
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
-

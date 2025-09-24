@@ -1,0 +1,56 @@
+/* src/components/RankingPage/RankingPage.module.css */
+
+.rankingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rankingList {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+}
+
+.rankingItem {
+    background-color: rgba(0, 229, 255, 0.1);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    border-radius: 5px;
+    padding: 1em;
+    margin-bottom: 0.8em;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1em;
+}
+
+.rankingItem:first-child {
+    background-color: rgba(255, 215, 0, 0.2); /* 1등 특별 색상 */
+    border-color: #ffd700;
+}
+
+.rankingItem:nth-child(2) {
+    background-color: rgba(192, 192, 192, 0.2); /* 2등 특별 색상 */
+    border-color: #c0c0c0;
+}
+
+.rankingItem:nth-child(3) {
+    background-color: rgba(205, 127, 50, 0.2); /* 3등 특별 색상 */
+    border-color: #cd7f32;
+}
+
+.rank {
+    font-weight: bold;
+    color: #00e5ff;
+    width: 2em;
+}
+
+.username {
+    flex-grow: 1;
+    text-align: left;
+    margin-left: 1em;
+}
+
+.score {
+    font-weight: bold;
+    color: #fff;
+}

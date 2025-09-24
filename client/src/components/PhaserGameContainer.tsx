@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import Phaser from 'phaser';
 import { useNavigate } from 'react-router-dom';
+import '../styles/PhaserGameContainer.module.css'
 
 
 // 전역 변수
@@ -16,6 +17,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         super(scene, x, y, 'player');
         scene.add.existing(this);
         scene.physics.add.existing(this);
+        this.setScale(0.2);
+        this.body?.setSize(this.width*0.4, this.height*0.8);
         this.setCollideWorldBounds(true);
     }
 }
@@ -103,10 +106,10 @@ class GameScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('sky', 'assets/sky.png');
+        this.load.image('sky', 'assets/bg.png');
         this.load.image('player', 'assets/player.png');
         this.load.image('bullet', 'assets/bullet.png');
-        this.load.image('enemy', 'assets/enemy.png');
+        this.load.image('enemy', 'assets/meteor.png');
     }
 
     create() {
@@ -114,7 +117,7 @@ class GameScene extends Phaser.Scene {
         playerHealth = 3;
         gameOver = false;
 
-        this.add.image(400, 300, 'sky').setScrollFactor(0);
+        this.add.image(400, 300, 'sky');
 
         this.player = new Player(this, 400, 550);
         this.bullets = new Bullets(this);
@@ -127,6 +130,8 @@ class GameScene extends Phaser.Scene {
                 if (gameOver) return;
                 const x = Phaser.Math.Between(50, 750);
                 const enemy = this.enemies.create(x, -50, 'enemy');
+                enemy.setScale(0.07)
+                enemy.body.setSize(enemy.width*0.7, enemy.height*0.6);
                 enemy.setVelocityY(Phaser.Math.Between(50, 150));
             },
             callbackScope: this,

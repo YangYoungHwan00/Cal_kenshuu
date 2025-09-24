@@ -1,6 +1,5 @@
-// src/components/RankingPage.tsx
-
 import React, { useState, useEffect } from 'react';
+import '../styles/RankingPage.module.css'
 
 // 랭킹 데이터의 타입을 정의
 interface Ranking {
