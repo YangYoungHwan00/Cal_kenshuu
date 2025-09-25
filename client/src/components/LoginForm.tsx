@@ -33,7 +33,7 @@ const LoginForm = () => {
 
     } catch (err) {
       console.error("Login failed:", err);
-      alert("로그인 요청 실패!");
+      alert("ログインに失敗しました");
       navigate('/login');
     }
   };

@@ -31,11 +31,11 @@ const RegisterForm = () => {
 
       } else {
         const errorMessages = data.errors ? data.errors.map((err: any) => err.msg).join('\n') : data.message;
-        alert("회원가입 실패!\n" + errorMessages);
+        alert("会員登録に失敗しました\n" + errorMessages);
       }
     } catch (err) {
       console.error("Registration failed:", err);
-      alert("회원가입 요청 실패!");
+      alert("会員登録に失敗しました");
     }
   };
 

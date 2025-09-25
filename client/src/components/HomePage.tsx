@@ -18,7 +18,7 @@ function HomePage() {
 
   return (
     <div>
-      <h1>Home</h1>
+      <h1>Space pong</h1>
       <button onClick={handleGoToSignUp}>
         会員登録
       </button>

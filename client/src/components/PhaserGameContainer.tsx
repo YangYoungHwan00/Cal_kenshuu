@@ -137,6 +137,7 @@ class GameScene extends Phaser.Scene {
             callbackScope: this,
             loop: true
         });
+        
 
         
 
